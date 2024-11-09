@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
             return res.render("domain", {user: user, jwt: token, domains: data, message: ""});
         }
     } else {
-        return res.render("domain", {user: user, jwt: token, domains: data, message: ""});
+        return res.render("domain", {user: user, domains: data, message: ""});
     }
 
 
