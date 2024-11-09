@@ -37,7 +37,14 @@ passport.use(new GitHubStrategy({
     scope: ['user:email'],
   },
   (accessToken, refreshToken, profile, done) => {
-    return done(null, { ...profile, token: accessToken });
+    // Extract only the required fields from profile
+    const user = {
+      id: profile.id,
+      username: profile.username,
+      email: profile.emails && profile.emails[0] ? profile.emails[0].value : null,
+      avatar_url: profile.photos && profile.photos[0] ? profile.photos[0].value : null,
+    };
+    return done(null, user);
   }
 ));
 
@@ -58,6 +65,8 @@ const router = require("./util/router");
 app.use(cors({ origin: "*" }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('static'))
+
 
 app.use("/", router);
 
