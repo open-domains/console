@@ -1,6 +1,8 @@
 const User = require('../models/user');
 module.exports = async (req, res) => {
-    const user = req.user;
+    let user = req.user;
+    // make username have a capital first letter
+    user.username = user.username.charAt(0).toUpperCase() + user.username.slice(1);
     let data = ''
     // get every user in the database
     try {

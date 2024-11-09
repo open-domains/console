@@ -1,5 +1,6 @@
 module.exports = async (req, res) => {
-    const user = req.user;
+    let user = req.user;
+    user.username = user.username.charAt(0).toUpperCase() + user.username.slice(1);
     const code = req.query.code;
     const data = ''
     token = '222'

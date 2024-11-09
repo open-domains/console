@@ -4,7 +4,7 @@
       type="image/png" 
       href="/assets/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User ¦ Open Domains</title>
+    <title>Admin ¦ Open Domains</title>
   
   
   </head>
@@ -19,12 +19,12 @@
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="/domains/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">My Domains</a>
+                <a href="/profile/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">My Domains</a>
                 <% if (user.staffMember) { %>
-                  <a href="/staff/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium">Staff</a>
+                  <a href="/staff/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Staff</a>
                 <% } %>
                 <% if (user.admin) { %>    
-                  <a href="/admin/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Admin</a>
+                  <a href="/admin/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium">Admin</a>
                 <% } %>
                 <a href="https://www.buymeacoffee.com/andrewstech" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Donate</a>
   
@@ -63,7 +63,7 @@
                 -->
                 <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden" role="menu" id="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                   <!-- Active: "bg-gray-100", Not Active: "" -->
-                  <a href="/settings/" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                  <!--<a href="/settings/" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>-->
                   <a href="/logout/" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
                 </div>
               </div>
@@ -115,7 +115,7 @@
             </button>
           </div>
           <div class="mt-3 space-y-1 px-2">
-            <a href="/settings/" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
+        <!--<a href="/settings/" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>-->
             <a href="/logout/" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign out</a>
           </div>
         </div>
@@ -130,7 +130,7 @@
     <% } %>
     <header class="bg-white shadow">
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Hello <%= user.username %>, welcome to the Admin zone you bitch.</h1>
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Hello <%= user.username %>, welcome to the Admin zone.</h1>
       </div>
     </header>
     <main>
