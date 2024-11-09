@@ -8,10 +8,10 @@ const passport = require('passport');
 const router = Router();
 const routes = require("./routes");
 
-const ensureAuthenticated = require("./auth");
+const { ensureAuthenticated, ensureAdmin, ensureStaff } = require("./auth");
 
 router.get("/", async (req, res) => {
-  res.send("Hello World!");
+  res.send("OpenDomains Console. This is currently a work in progress. For testing visit /profile");
 });
 
 router.get('/auth/github', passport.authenticate('github'));
@@ -26,6 +26,10 @@ router.get('/auth/github/callback', passport.authenticate('github', { failureRed
 
 router.get('/profile', ensureAuthenticated, (req, res) => {
     routes.profile(req, res);
+});
+
+router.get('/admin', ensureAdmin, (req, res) => {
+    routes.admin(req, res);
 });
 
 router.get('/raw', ensureAuthenticated, (req, res) => {

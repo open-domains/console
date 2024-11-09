@@ -62,6 +62,8 @@ passport.use(new GitHubStrategy({
             new User({
                 _id: profile.id,
                 admin: false,
+                staffMember: false,
+                dono: false,
                 username: profile.username,
                 email: profile.emails && profile.emails[0] ? profile.emails[0].value : null,
                 avatar_url: profile.photos && profile.photos[0] ? profile.photos[0].value : null,
