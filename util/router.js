@@ -32,6 +32,10 @@ router.get('/admin', ensureAdmin, (req, res) => {
     routes.admin(req, res);
 });
 
+router.get('/staff', ensureStaff, (req, res) => {
+    routes.staff(req, res);
+});
+
 router.get('/raw', ensureAuthenticated, (req, res) => {
     res.send(req.user);
 });

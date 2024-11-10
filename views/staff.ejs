@@ -4,7 +4,7 @@
       type="image/png" 
       href="/assets/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin ¦ Open Domains</title>
+    <title>Staff ¦ Open Domains</title>
   
   
   </head>
@@ -19,12 +19,12 @@
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="/profile/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">My Domains</a>
+                <a href="/domains/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">User Domains</a>
                 <% if (user.staffMember) { %>
-                  <a href="/staff/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Staff</a>
+                  <a href="/staff/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium">Staff</a>
                 <% } %>
                 <% if (user.admin) { %>    
-                  <a href="/admin/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium">Admin</a>
+                  <a href="/admin/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Admin</a>
                 <% } %>
                 <a href="https://www.buymeacoffee.com/andrewstech" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Donate</a>
   
@@ -91,7 +91,7 @@
       <div class="md:hidden hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
           <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-          <a href="/profile/" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">My domains</a>
+          <a href="/profile" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">My domains</a>
           <% if (user.staffMember) { %>
               <a href="/staff/" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Staff</a>
           <% } %>    
@@ -115,7 +115,7 @@
             </button>
           </div>
           <div class="mt-3 space-y-1 px-2">
-        <!--<a href="/settings/" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>-->
+            <!--<a href="/settings/" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>-->
             <a href="/logout/" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign out</a>
           </div>
         </div>
@@ -130,39 +130,32 @@
     <% } %>
     <header class="bg-white shadow">
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Hello <%= user.username %>, welcome to the Admin zone.</h1>
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Hello <%= user.username %> welcome to the staff zone.</h1>
       </div>
     </header>
     <main>
       <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <!-- Your content -->
         <div class="mt-8">
-          <h2 class="text-xl font-bold mb-4">Manage bitches</h2>
-          <% if (users.length === 0) { %>
-              <p class="text-gray-600">No bitches.</p>
+          <h2 class="text-xl font-bold mb-4">Domain awaing approval</h2>
+          <% if (domains.length === 0) { %>
+              <p class="text-gray-600">All done.</p>
           <% } else { %>
               <table class="w-full border-collapse border border-gray-300">
                   <thead>
                       <tr>
-                          <th class="py-2 px-4 bg-gray-200 text-left">ID</th>
-                          <th class="py-2 px-4 bg-gray-200 text-left">Username</th>
-                          <th class="py-2 px-4 bg-gray-200 text-left">Donator</th>
-                          <th class="py-2 px-4 bg-gray-200 text-left">Staff</th>
-                          <th class="py-2 px-4 bg-gray-200 text-left">Admin</th>
+                          <th class="py-2 px-4 bg-gray-200 text-left">Domain Name</th>
+                          <th class="py-2 px-4 bg-gray-200 text-left">Status</th>
                           <th class="py-2 px-4 bg-gray-200"></th> <!-- Empty header for Edit button -->
                       </tr>
                   </thead>
                   <tbody>
-                      <% users.forEach(user => { %>
+                      <% domains.forEach(domain => { %>
                           <tr>
-                              <td class="py-2 px-4 border border-gray-300"><%= user._id %></td>
-                              <td class="py-2 px-4 border border-gray-300"><%= user.username %></td>
-                              <td class="py-2 px-4 border border-gray-300"><%= user.dono %></td>
-                              <td class="py-2 px-4 border border-gray-300"><%= user.staffMember %></td>
-                              <td class="py-2 px-4 border border-gray-300"><%= user.admin %></td>
+                              <td class="py-2 px-4 border border-gray-300"><%= domain._id %></td>
+                              <td class="py-2 px-4 border border-gray-300"><%= domain.status %></td>
                               <td class="py-2 px-4 border border-gray-300">
-                                  <a href="/admin/users?id=<%= user._id %>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</a>
-                                  <a href="/admin/del?id=<%= user._id %>" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</a>
+                                  <a href="/edit?domain=<%= domain._id %>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</a>
                               </td>
                           </tr>
                       <% }) %>
